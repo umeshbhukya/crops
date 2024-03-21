@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Prediction</title>
+	 <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Prediction</title>
+   
+
+
+    <style>
+body {
+  background-image: url('farmers.webp');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+        
+ {
+            font-family: Arial, sans-serif;
+            background-color:#D2B48C;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color:#87CEEB;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color:violet;
+            color: black;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+   .footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left-section p {
+    margin: 0;
+}
+
+.right-section img {
+    width: 150px; /* Adjust the width of images as needed */
+    margin-left: 10px; /* Add some spacing between images */
+}
+
+    </style>
+
+<body style="
+    margin-top: 6px;
+    margin-left: 28px;
+    margin-bottom: 28px;
+    margin-right: 28px;
+">
+
+<h1 style="font-size:30px; text-align:center; line-height: 1;background-color:;padding:40px 80px 40px 80px">SMART CROP PREDICTION</h1>
+<p style="font-size:20px; text-align:center;line-height:1.5;">A website has been developed with the purpose of predicting the most suitable crop based on provided nutrient values.<br>Provide the NITROGEN , PHOSPOROUS AND POTASSIUM values from the NPK sensor.<br>[NOTE:The values should not exceed 255 mg/kg.]</p>
+
+<hr>
+
+
+      <div style="border=150px;margin:60px 0px 60px 600px;justify-content: center;width: 418.800;width: 841.800;width: 418px;">
+    <form id="cropForm" style="padding:60px;text-align:centre;width: 271px;" >
+        <label for="nitrogen">Nitrogen:</label>
+        <input type="number" id="nitrogen" required="">
+
+        <label for="phosphorus">Phosphorus:</label>
+        <input type="number" id="phosphorus" required="">
+
+        <label for="potassium">Potassium:</label>
+        <input type="number" id="potassium" required="">
+
+        <button type="button" onclick="predictCrop()">Predict Crop</button>
+    </form>
+<div id="cente"><h3 id="cropname"></h3><img src="#" id="ima"></img></div>
+</div>
+<script>
+function predictCrop() {
+    var nitrogen = parseFloat(document.getElementById('nitrogen').value);
+    var phosphorus = parseFloat(document.getElementById('phosphorus').value);
+    var potassium = parseFloat(document.getElementById('potassium').value);
+
+    var prediction = "Unknown";
+    if (nitrogen <= 0 || phosphorus <= 0 || potassium <= 0) {
+        alert("THE VALUES SHOULD NOT BELOW 0mg/kg and above 255mg/kg(we don't have crops regarding such values in this website)");
+
+    } else if (nitrogen > 255 || phosphorus > 255 || potassium > 255) {
+        alert("THE VALUES SHOULD NOT ABOVE 255mg/kg and below o mg/kg(we don't have crops regarding such values in this website)");
+
+    } 
+      else if ((nitrogen > 190 && nitrogen < 251) && (phosphorus > 15 && phosphorus < 45) && (potassium > 180 && potassium < 251)) {
+        document.getElementById('cropname').innerText = 'RICE';
+        document.getElementById('ima').src = "rice.jpeg";
+    }
+    else if ((nitrogen > 119 && nitrogen < 151) && (phosphorus > 59 && phosphorus < 81) && (potassium > 119 && potassium < 151)) {
+        document.getElementById('cropname').innerText = 'CORN';
+        document.getElementById('ima').src = "corn.jpeg";
+    } else if ((nitrogen > 150 && nitrogen < 253) && (phosphorus > 14 && phosphorus < 41) && (potassium > 150 && potassium < 253)) {
+        document.getElementById('cropname').innerText = 'CHILLI';
+        document.getElementById('ima').src = "chilli.jpeg";
+    } else if ((nitrogen > 96 && nitrogen < 125) && (phosphorus > 36 && phosphorus < 62) && (potassium > 70 && potassium < 111)) {
+        document.getElementById('cropname').innerText = 'COTTON';
+        document.getElementById('ima').src = "cotton.jpeg";
+    } else if ((nitrogen > 20 && nitrogen < 65) && (phosphorus > 14 && phosphorus < 41) && (potassium > 29 && potassium < 71)) {
+        document.getElementById('cropname').innerText = 'TURMERIC';
+        document.getElementById('ima').src = "turmeric.jpeg";
+    } else if ((nitrogen > 50 && nitrogen < 85) && (phosphorus > 35 && phosphorus < 63) && (potassium > 72 && potassium < 105)) {
+        document.getElementById('cropname').innerText = 'SUNFLOWER';
+        document.getElementById('ima').src = "sunflower.jpeg";
+    } else if ((nitrogen > 33 && nitrogen < 62) && (phosphorus > 15 && phosphorus < 44) && (potassium > 38 && potassium < 62)) {
+        document.getElementById('cropname').innerText = 'GROUNDNUT';
+        document.getElementById('ima').src = "groundnut.jpeg";
+    } else if ((nitrogen > 30 && nitrogen < 52) && (phosphorus > 17 && phosphorus < 35) && (potassium > 26 && potassium < 51)) {
+        document.getElementById('cropname').innerText = 'GREENGRAM';
+        document.getElementById('ima').src = "greengram.jpeg";
+    } else {
+        prediction = "sorry there are no crops available in our database for such values!"
+        document.getElementById('ima').src = "sorry.jpeg";
+    }
+}
+</script>
+<div style="text-align:center;" ><a style="padding:15px; background:gold;" href="ayyya.html"> Click Here(to know more)</div>
+<footer class="footer">
+    <div class="container">
+        <div class="left-section">
+            <h3>Developed by</h3>
+                  <p>B umesh nayak -20EG104406</p>
+               <p>G sathvik sai  -21EG504405</p>
+                <p>manikanta     -21EG504407</p>
+             <h3>PROJECT GUIDE</h3>
+            <p>Pr.N.Mangala Gouri</p>
+        </div>
+        <div class="right-section">
+            <img src="anurag1.jpg" alt="Image 1">
+        </div>
+    </div>
+</footer>
+
+</head>
+</body>
+</html>
